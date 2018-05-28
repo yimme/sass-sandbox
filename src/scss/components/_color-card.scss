@@ -1,3 +1,21 @@
 .color-card {
-    
+    display: inline-flex;
+    flex-direction: column;
+    padding: 10px;
+    border: 1px solid color('border');
+    border-radius: 2px;
+
+    &__swatch {
+        height: 50px;
+        margin-bottom: 5px;
+    }
+
+    &__name {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    &__hex {
+        color: color('text', 'light');
+    }
 }
