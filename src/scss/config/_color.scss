@@ -1,0 +1,37 @@
+/*
+*   Define all colors used in the project
+*   Create functions to use the colors throughout the project
+*/
+
+// A nested map containing colors and their variations
+$colors: (
+    'primary': (
+        'base': #B53471,
+        'light': #c3427f,
+        'dark': #a02861
+    ),
+    'accent': (
+        'base': #43B544,
+        'light': #6fce70,
+        'dark': #308d30
+    ),
+    'background': (
+        'base': #eeeeee,
+        'light': #ffffff,
+        'dark': #d2d2d2
+    )
+);
+
+
+// Function to get a variant of a color
+@function color(
+    $name: 'primary',
+    $variant: 'base'
+) {
+    $color: null;
+
+    $color-list: map-get($colors, $name);
+    $color: map-get($color-list, $variant);
+
+    @return $color;
+}
