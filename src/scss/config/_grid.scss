@@ -1,0 +1,112 @@
+/*
+*   Define all settings for the grid
+*   Create mixins and functions to work with the grid throughout the project
+*/
+
+$grid_max-width: 1280px;
+$grid_columns: 12;
+$grid_gutter: 20px;
+
+// TODO: Research phone breakpoints
+$grid_breakpoints: (
+    'phone': (
+        'small': 480px,
+        'medium': 600px
+    ),
+    'tablet': (
+        'portrait': 768px,
+        'landscape': 1024px
+    ),
+    'desktop': (
+        'small': 1280px,
+        'medium': 1336px,
+        'large': 1920px
+    )
+);
+
+$grid_margins: (
+    'xsmall': 5px,
+    'small': 10px,
+    'base': 20px,
+    'large': 40px,
+    'xlarge': 100px
+);
+
+@function spacing($variant: 'base') {
+    @return map-get($grid_margins, $variant);
+}
+
+@function breakpoint(
+    $device,
+    $size
+) {
+    $resolution: null;
+
+    $resolutions: map-get($grid_breakpoints, $device);
+    $resolution: map-get($resolutions, $size);
+
+    @return $resolution;
+
+    @error "Invalid breakpoint entries"
+}
+
+@mixin breakpoint($device, $size) {
+    @media only screen and (min-width: breakpoint($device, $size)) {
+        @content;
+    }
+}
+
+@mixin container($direction: 'column') {
+    display: flex;
+    flex-direction: $direction;
+    width: 100%;
+    max-width: $grid_max-width;
+    margin: {
+        left: auto;
+        right: auto;
+    }
+
+    @if $direction == 'column' {
+        flex-wrap: wrap;
+    }
+}
+
+@mixin row() {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    @include breakpoint('tablet', 'portrait') {
+        flex-direction: row;
+    }
+}
+
+@mixin column($size: auto, $direction: column) {
+    display: flex;
+    flex-direction: $direction;
+    margin: {
+        left: $grid_gutter / 2;
+        right: $grid_gutter /2;
+    };
+
+    @include breakpoint('tablet', 'portrait') {
+        @if $size == auto {
+            width: auto;
+            flex: 1;
+        } @else {
+            width: $grid_max-width / $grid_columns * $size - $grid_gutter / 2 
+        }
+    }
+}
+
+.sandbox-container {
+    @include container();
+}
+
+.sandbox-row {
+    @include row();
+}
+
+.sandbox-column {
+    @include column();
+}
