@@ -43,11 +43,18 @@ $grid_margins: (
     $resolution: null;
 
     $resolutions: map-get($grid_breakpoints, $device);
-    $resolution: map-get($resolutions, $size);
+    
+    @if $resolutions {
+        $resolution: map-get($resolutions, $size);
+    } @else {
+        @error 'Invalid breakpoint device: #{$device}';
+    }
 
-    @return $resolution;
-
-    @error "Invalid breakpoint entries"
+    @if $resolution {
+        @return $resolution;
+    } @else {
+        @error "Invalid breakpoint size: #{$size}";
+    }
 }
 
 @mixin breakpoint($device, $size) {
@@ -99,6 +106,7 @@ $grid_margins: (
     }
 }
 
+// Examples
 .sandbox-container {
     @include container();
 }
