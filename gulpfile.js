@@ -20,9 +20,7 @@ gulp.task('html', () => {
 })
 
 // Build project
-gulp.task('build', ['sass', 'html'] ,() => {
-
-})
+gulp.task('build', ['sass', 'html'])
 
 // Watch changes and run local server
 gulp.task('watch', ['sass', 'html'], () => {
