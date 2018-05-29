@@ -47,5 +47,5 @@ $font-sizes: (
 }
 
 .test {
-    @include font();
+    @include font('base', 'h1');
 }
