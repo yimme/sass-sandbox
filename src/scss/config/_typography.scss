@@ -1,0 +1,51 @@
+// Import fonts 
+
+// Define variables
+
+$fonts: (
+    'base': 'Open Sans',
+    'headings': 'Hind'
+);
+
+$font-sizes: (
+    'xsmall': .8rem,
+    'small': .9rem,
+    'base': 1rem,
+    'h1': 2.2rem,
+    'h2': 1.8rem,
+    'h3': 1.4rem
+);
+
+@function fontFam($type: 'base') {
+    $rtrn_font: null;
+
+    $rtrn_font: map-get($fonts, $type);
+    @if $rtrn_font {
+        @return $rtrn_font;
+    }
+
+    @error "#{$type} is not a valid font type";
+
+}
+
+@function fontSize($size: 'base') {
+    $rtrn_size: null;
+
+    $rtrn_size: map-get($font-sizes, $size);
+    @if $rtrn_size {
+        @return $rtrn_size;
+    }
+
+    @error "#{$size}is not a valid font size";
+}
+
+@mixin font($font: 'base', $size: 'base') {
+    font: {
+        family: fontFam($font);
+        size: fontSize($size);
+    }
+}
+
+.test {
+    @include font();
+}
