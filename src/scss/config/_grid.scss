@@ -3,9 +3,9 @@
 *   Create mixins and functions to work with the grid throughout the project
 */
 
-$grid_max-width: 1280px;
-$grid_columns: 12;
-$grid_gutter: 20px;
+$grid_max-width: 1280px !default;
+$grid_columns: 12 !default;
+$grid_gutter: 20px !default;
 
 // TODO: Research phone breakpoints
 $grid_breakpoints: (
