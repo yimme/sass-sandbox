@@ -53,8 +53,30 @@ $colors: (
     }
 }
 
+// Creates a gradient from the selected color
+@function gradient($color, $deg: 0) {
+    $color: map-get($colors, $color);
+
+    @if ($color) {
+        $light: map-get($color, 'light');
+        $dark: map-get($color, 'dark');
+
+        @return 'linear-gradient(#{$deg}deg, #{$light}, #{$dark} )';
+    } @else {
+        @error 'Can not find color "#{$color}".';
+    }
+}
+
 // Usage 
 .primary {
     color: color('primary', 'text');
     background: color('primary', 'light');
+}
+
+// Usage
+.gradient {
+    background: {
+        color: color('primary');
+        image: gradient('primary', 90);
+    }
 }
