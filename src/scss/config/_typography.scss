@@ -1,0 +1,27 @@
+// Import fonts 
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+$typography: (
+    root-size: 16px,
+    main-font: 'Open Sans',
+    heading-font: 'Open sans'
+);
+
+@function _type($input) {
+    @if map-has-key($map: $typography, $key: $input) {
+        @return map-get($map: $typography, $key: $input);
+    } @else {
+        @error "Can't find '#{$input}' in $typography map";
+    }
+}
+
+:root {
+    font-size: _type('root-size');
+    font-family: _type('main-font'), sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: _type('heading-font'), sans-serif;
+}
+
+
