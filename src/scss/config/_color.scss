@@ -8,7 +8,8 @@ $colors: (
     'primary': (
         'base': #B53471,
         'light': #c3427f,
-        'dark': #a02861
+        'dark': #a02861,
+        'text': #fff
     ),
     'accent': (
         'base': #43B544,
@@ -33,13 +34,27 @@ $colors: (
 
 // Function to get a variant of a color
 @function color(
-    $name: 'primary',
+    $name,
     $variant: 'base'
 ) {
     $color: null;
-
+    
     $color-list: map-get($colors, $name);
-    $color: map-get($color-list, $variant);
+    @if ($color-list) {
+        $color: map-get($color-list, $variant);
 
-    @return $color;
+        @if ($color) {
+            @return $color;
+        } @else {
+            @error 'Could not find variant "#{$variant}" in #{$color}.';
+        }
+    } @else {
+        @error 'Could not find color "#{$name}"';
+    }
+}
+
+// Usage 
+.primary {
+    color: color('primary', 'text');
+    background: color('primary', 'light');
 }
