@@ -54,14 +54,14 @@ $colors: (
 }
 
 // Creates a gradient from the selected color
-@function gradient($color, $deg: 0) {
+@function gradient($color, $deg: 0deg, $type: 'linear') {
     $color: map-get($colors, $color);
 
     @if ($color) {
         $light: map-get($color, 'light');
         $dark: map-get($color, 'dark');
 
-        @return 'linear-gradient(#{$deg}deg, #{$light}, #{$dark} )';
+        @return #{$type}-gradient(#{$deg}, #{$light}, #{$dark} );
     } @else {
         @error 'Can not find color "#{$color}".';
     }
@@ -77,6 +77,6 @@ $colors: (
 .gradient {
     background: {
         color: color('primary');
-        image: gradient('primary', 90);
+        image: gradient('primary', 'to right');
     }
 }

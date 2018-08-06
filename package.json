@@ -6,7 +6,8 @@
   "author": "hendrixjimme@gmail.com <hendrixjimme@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "watch": "node-sass --watch ./src/scss/ -o ./dist/css"
+    "watch": "node-sass --watch ./src/scss/ -o ./dist/css",
+    "build": "node-sass ./src/scss/ -o ./dist/css --output-style=compressed"
   },
   "devDependencies": {
     "node-sass": "^4.9.2"
