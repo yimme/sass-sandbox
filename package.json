@@ -6,8 +6,7 @@
   "author": "hendrixjimme@gmail.com <hendrixjimme@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "gulp build",
-    "serve": "gulp watch"
+    "watch": "node-sass --watch ./src/scss/ -o ./dist/css"
   },
   "devDependencies": {
     "node-sass": "^4.9.2"
