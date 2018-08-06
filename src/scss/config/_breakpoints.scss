@@ -1,0 +1,15 @@
+// TODO: Base on em or rem units. 
+
+$devices: (
+    phone: (
+        portrait: 328px,
+        landscape: 480px
+    ),
+    tablet: (
+        portrait: 768px,
+        landscape: 1024px
+    ),
+    laptop: (
+        width: 1330px
+    )
+);
