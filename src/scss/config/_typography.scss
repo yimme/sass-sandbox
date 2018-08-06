@@ -4,7 +4,8 @@
 $typography: (
     root-size: 16px,
     main-font: 'Open Sans',
-    heading-font: 'Open sans'
+    heading-font: 'Open sans',
+    amplifier: .2
 );
 
 @function _type($input) {
@@ -24,4 +25,11 @@ h1, h2, h3, h4, h5, h6 {
     font-family: _type('heading-font'), sans-serif;
 }
 
+// TODO: Better solution
+h1 { font-size: _type('amplifier') * 6 + 1rem; }
+h2 { font-size: _type('amplifier') * 5 + 1rem; }
+h3 { font-size: _type('amplifier') * 4 + 1rem; }
+h4 { font-size: _type('amplifier') * 3 + 1rem; }
+h5 { font-size: _type('amplifier') * 2 + 1rem; }
+h6 { font-size: _type('amplifier') + 1rem;}
 
