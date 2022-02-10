@@ -10,7 +10,7 @@
     "build": "node-sass ./src/scss/ -o ./dist/css --output-style=compressed"
   },
   "devDependencies": {
-    "node-sass": "^4.9.2"
+    "node-sass": "^7.0.0"
   },
   "dependencies": {}
 }
